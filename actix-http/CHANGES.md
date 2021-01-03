@@ -7,10 +7,6 @@
 * Update `bytes` to `1.0`. [#1813]
 * Update `h2` to `0.3`. [#1813]
 
-
-[#1813]: https://github.com/actix/actix-web/pull/1813
-
-
 ### Removed
 * Deprecated `on_connect` methods have been removed. Prefer the new
   `on_connect_ext` technique. [#1857]
@@ -19,9 +15,13 @@
 * Remove `ConnectError::SslHandshakeError` and re-export of `HandshakeError`.
   due to the removal of this type from `tokio-openssl` crate. openssl handshake 
   error would return as `ConnectError::SslError`. [#1813]
+* `Response::set` and `Response::header` methods; use the respective `Response::set_header` and
+  `Reponse::append_header` methods. [#1869]
 
 [#1813]: https://github.com/actix/actix-web/pull/1813
 [#1857]: https://github.com/actix/actix-web/pull/1857
+[#1813]: https://github.com/actix/actix-web/pull/1813
+[#1869]: https://github.com/actix/actix-web/pull/1869
 
 
 ## 2.2.0 - 2020-11-25
