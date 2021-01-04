@@ -82,9 +82,9 @@ actix-service = "2.0.0-beta.3"
 actix-utils = "3.0.0-beta.1"
 actix-tls = { version = "3.0.0-beta.2", default-features = false, optional = true }
 
-actix-web-codegen = "0.4.0"
+actix-web-codegen = { git = "https://github.com/inq/actix-web.git" }
 actix-http = { git = "https://github.com/inq/actix-web.git" }
-awc = { version = "3.0.0-beta.1", default-features = false }
+awc = { git = "https://github.com/inq/actix-web.git", default-features = false }
 
 ahash = "0.6"
 bytes = "1"
