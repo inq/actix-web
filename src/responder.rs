@@ -6,7 +6,7 @@ use std::task::{Context, Poll};
 
 use actix_http::error::InternalError;
 use actix_http::http::{
-    header::IntoHeaderValue, Error as HttpError, HeaderMap, HeaderName, StatusCode,
+    header::IntoHeaderPair, Error as HttpError, HeaderMap, HeaderName, StatusCode,
 };
 use actix_http::{Error, Response, ResponseBuilder};
 use bytes::{Bytes, BytesMut};
@@ -262,29 +262,24 @@ impl<T: Responder> CustomResponder<T> {
     ///     web::Json(
     ///         MyObj{name: "Name".to_string()}
     ///     )
-    ///     .with_header("x-version", "1.2.3")
+    ///     .with_header(("x-version", "1.2.3"))
     /// }
     /// # fn main() {}
     /// ```
-    pub fn with_header<K, V>(mut self, key: K, value: V) -> Self
+    pub fn with_header<H>(mut self, header: H) -> Self
     where
-        HeaderName: TryFrom<K>,
-        <HeaderName as TryFrom<K>>::Error: Into<HttpError>,
-        V: IntoHeaderValue,
+        H: IntoHeaderPair,
+        H::Error: Into<HttpError>,
     {
         if self.headers.is_none() {
             self.headers = Some(HeaderMap::new());
         }
 
-        match HeaderName::try_from(key) {
-            Ok(key) => match value.try_into() {
-                Ok(value) => {
-                    self.headers.as_mut().unwrap().append(key, value);
-                }
-                Err(e) => self.error = Some(e.into()),
-            },
+        match header.try_into_header_pair() {
+            Ok((key, value)) => self.headers.as_mut().unwrap().append(key, value),
             Err(e) => self.error = Some(e.into()),
         };
+
         self
     }
 }

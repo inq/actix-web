@@ -54,7 +54,7 @@ pub use self::response::{Response, ResponseBuilder};
 pub use self::service::HttpService;
 
 pub mod http {
-    //! Various HTTP related types
+    //! Various HTTP related types.
 
     // re-exports
     pub use http::header::{HeaderName, HeaderValue};
@@ -65,7 +65,7 @@ pub mod http {
     pub use crate::cookie::{Cookie, CookieBuilder};
     pub use crate::header::HeaderMap;
 
-    /// Various http headers
+    /// A collection of HTTP headers and helpers.
     pub mod header {
         pub use crate::header::*;
     }
@@ -73,7 +73,7 @@ pub mod http {
     pub use crate::message::ConnectionType;
 }
 
-/// Http protocol
+/// HTTP protocol.
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Protocol {
     Http1,
