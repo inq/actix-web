@@ -73,18 +73,18 @@ name = "client"
 required-features = ["rustls"]
 
 [dependencies]
-actix-codec = "0.4.0-beta.1"
-actix-macros = "0.1.0"
-actix-router = "0.2.4"
-actix-rt = "2.0.0-beta.2"
-actix-server = "2.0.0-beta.2"
-actix-service = "2.0.0-beta.3"
-actix-utils = "3.0.0-beta.1"
-actix-tls = { version = "3.0.0-beta.2", default-features = false, optional = true }
+actix-codec = { git = 'https://github.com/inq/actix-net.git'}
+actix-macros = { git = 'https://github.com/inq/actix-net.git'}
+actix-router = { git = 'https://github.com/inq/actix-net.git'}
+actix-rt = { git = 'https://github.com/inq/actix-net.git'}
+actix-server = { git = 'https://github.com/inq/actix-net.git'}
+actix-service = { git = 'https://github.com/inq/actix-net.git'}
+actix-utils = { git = 'https://github.com/inq/actix-net.git'}
+actix-tls = { git = 'https://github.com/inq/actix-net.git'}
 
-actix-web-codegen = { git = "https://github.com/inq/actix-web.git" }
-actix-http = { git = "https://github.com/inq/actix-web.git" }
-awc = { git = "https://github.com/inq/actix-web.git", default-features = false }
+actix-web-codegen = { path = 'actix-web-codegen' }
+actix-http = { path = 'actix-http' }
+awc = { path = 'awc', default-features = false }
 
 ahash = "0.6"
 bytes = "1"
@@ -109,7 +109,7 @@ smallvec = "1.6"
 
 [dev-dependencies]
 actix = "0.11.0-beta.1"
-actix-http = { git = "https://github.com/inq/actix-web.git", features = ["actors"] }
+actix-http = { path = 'actix-http', features = ["actors"] }
 rand = "0.8"
 env_logger = "0.8"
 serde_derive = "1.0"

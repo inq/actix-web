@@ -37,10 +37,10 @@ rustls = ["rust-tls", "actix-http/rustls"]
 compress = ["actix-http/compress"]
 
 [dependencies]
-actix-codec = "0.4.0-beta.1"
-actix-service = "2.0.0-beta.3"
+actix-codec = { git = 'https://github.com/inq/actix-net.git'}
+actix-service = { git = 'https://github.com/inq/actix-net.git'}
 actix-http = { git = "https://github.com/inq/actix-web.git" }
-actix-rt = "2.0.0-beta.2"
+actix-rt = { git = 'https://github.com/inq/actix-net.git'}
 
 base64 = "0.13"
 bytes = "1"

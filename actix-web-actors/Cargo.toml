@@ -17,9 +17,9 @@ path = "src/lib.rs"
 
 [dependencies]
 actix = "0.11.0-beta.1"
-actix-codec = "0.4.0-beta.1"
-actix-http = "3.0.0-beta.1"
-actix-web = { version = "4.0.0-beta.1", default-features = false }
+actix-codec = { git = 'https://github.com/inq/actix-net.git'}
+actix-http = { git = 'https://github.com/inq/actix-web.git'}
+actix-web = { git = 'https://github.com/inq/actix-web.git', default-features = false }
 
 bytes = "1"
 bytestring = "1"

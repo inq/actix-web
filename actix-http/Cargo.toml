@@ -40,11 +40,11 @@ secure-cookies = ["cookie/secure"]
 actors = ["actix"]
 
 [dependencies]
-actix-service = "2.0.0-beta.3"
-actix-codec = "0.4.0-beta.1"
-actix-utils = "3.0.0-beta.1"
-actix-rt = "2.0.0-beta.2"
-actix-tls = "3.0.0-beta.2"
+actix-service = { git = 'https://github.com/inq/actix-net.git'}
+actix-codec = { git = 'https://github.com/inq/actix-net.git'}
+actix-utils = { git = 'https://github.com/inq/actix-net.git'}
+actix-rt = { git = 'https://github.com/inq/actix-net.git'}
+actix-tls = { git = 'https://github.com/inq/actix-net.git'}
 actix = { version = "0.11.0-beta.1", optional = true }
 
 base64 = "0.13"
@@ -85,9 +85,9 @@ brotli2 = { version="0.3.2", optional = true }
 flate2 = { version = "1.0.13", optional = true }
 
 [dev-dependencies]
-actix-server = "2.0.0-beta.2"
-actix-http-test = { version = "3.0.0-beta.1", features = ["openssl"] }
-actix-tls = { version = "3.0.0-beta.2", features = ["openssl"] }
+actix-server = { git = 'https://github.com/inq/actix-net.git'}
+actix-http-test = { git = 'https://github.com/inq/actix-web.git', features = ["openssl"] }
+actix-tls = { git = 'https://github.com/inq/actix-net.git', features = ["openssl"] }
 criterion = "0.3"
 env_logger = "0.7"
 serde_derive = "1.0"
