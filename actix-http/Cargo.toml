@@ -45,7 +45,7 @@ actix-codec = { git = 'https://github.com/inq/actix-net.git'}
 actix-utils = { git = 'https://github.com/inq/actix-net.git'}
 actix-rt = { git = 'https://github.com/inq/actix-net.git'}
 actix-tls = { git = 'https://github.com/inq/actix-net.git'}
-actix = { version = "0.11.0-beta.1", optional = true }
+actix = { git = 'https://github.com/inq/actix.git', optional = true }
 
 base64 = "0.13"
 bitflags = "1.2"
