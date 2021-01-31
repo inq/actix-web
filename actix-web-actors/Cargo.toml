@@ -16,7 +16,7 @@ name = "actix_web_actors"
 path = "src/lib.rs"
 
 [dependencies]
-actix = "0.11.0-beta.1"
+actix = { git = 'https://github.com/inq/actix.git'}
 actix-codec = { git = 'https://github.com/inq/actix-net.git'}
 actix-http = { git = 'https://github.com/inq/actix-web.git'}
 actix-web = { git = 'https://github.com/inq/actix-web.git', default-features = false }
