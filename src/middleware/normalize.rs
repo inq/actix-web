@@ -132,7 +132,7 @@ where
 
     actix_service::forward_ready!(service);
 
-    fn call(&mut self, mut req: ServiceRequest) -> Self::Future {
+    fn call(&self, mut req: ServiceRequest) -> Self::Future {
         let head = req.head_mut();
 
         let original_path = head.uri.path();

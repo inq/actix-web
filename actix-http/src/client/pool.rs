@@ -103,7 +103,7 @@ where
     }
 
     fn call(&self, req: Connect) -> Self::Future {
-        let mut connector = self.0.clone();
+        let connector = self.0.clone();
         let inner = self.1.clone();
 
         let fut = async move {

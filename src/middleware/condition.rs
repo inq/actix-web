@@ -76,14 +76,14 @@ where
     type Error = E::Error;
     type Future = Either<E::Future, D::Future>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    fn poll_ready(&self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
         match self {
             ConditionMiddleware::Enable(service) => service.poll_ready(cx),
             ConditionMiddleware::Disable(service) => service.poll_ready(cx),
         }
     }
 
-    fn call(&mut self, req: Req) -> Self::Future {
+    fn call(&self, req: Req) -> Self::Future {
         match self {
             ConditionMiddleware::Enable(service) => Either::Left(service.call(req)),
             ConditionMiddleware::Disable(service) => Either::Right(service.call(req)),

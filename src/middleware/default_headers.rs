@@ -143,7 +143,7 @@ where
 
     actix_service::forward_ready!(service);
 
-    fn call(&mut self, req: ServiceRequest) -> Self::Future {
+    fn call(&self, req: ServiceRequest) -> Self::Future {
         let inner = self.inner.clone();
         let fut = self.service.call(req);
 

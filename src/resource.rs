@@ -328,7 +328,7 @@ where
         >,
     >
     where
-        F: FnMut(ServiceRequest, &mut T::Service) -> R + Clone,
+        F: Fn(ServiceRequest, &T::Service) -> R + Clone,
         R: Future<Output = Result<ServiceResponse, Error>>,
     {
         Resource {
@@ -471,7 +471,7 @@ impl Service<ServiceRequest> for ResourceService {
 
     actix_service::always_ready!();
 
-    fn call(&mut self, mut req: ServiceRequest) -> Self::Future {
+    fn call(&self, mut req: ServiceRequest) -> Self::Future {
         for route in self.routes.iter_mut() {
             if route.check(&mut req) {
                 if let Some(ref app_data) = self.app_data {

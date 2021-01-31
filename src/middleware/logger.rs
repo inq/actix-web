@@ -219,7 +219,7 @@ where
 
     actix_service::forward_ready!(service);
 
-    fn call(&mut self, req: ServiceRequest) -> Self::Future {
+    fn call(&self, req: ServiceRequest) -> Self::Future {
         if self.inner.exclude.contains(req.path())
             || self.inner.exclude_regex.is_match(req.path())
         {

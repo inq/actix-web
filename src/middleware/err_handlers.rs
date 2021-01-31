@@ -123,7 +123,7 @@ where
 
     actix_service::forward_ready!(service);
 
-    fn call(&mut self, req: ServiceRequest) -> Self::Future {
+    fn call(&self, req: ServiceRequest) -> Self::Future {
         let handlers = self.handlers.clone();
         let fut = self.service.call(req);
         ErrorHandlersFuture::ServiceFuture { fut, handlers }

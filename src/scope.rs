@@ -380,7 +380,7 @@ where
         >,
     >
     where
-        F: FnMut(ServiceRequest, &mut T::Service) -> R + Clone,
+        F: Fn(ServiceRequest, &T::Service) -> R + Clone,
         R: Future<Output = Result<ServiceResponse, Error>>,
     {
         Scope {
@@ -526,7 +526,7 @@ impl Service<ServiceRequest> for ScopeService {
 
     actix_service::always_ready!();
 
-    fn call(&mut self, mut req: ServiceRequest) -> Self::Future {
+    fn call(&self, mut req: ServiceRequest) -> Self::Future {
         let res = self.router.recognize_mut_checked(&mut req, |req, guards| {
             if let Some(ref guards) = guards {
                 for f in guards {
