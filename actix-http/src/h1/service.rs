@@ -417,7 +417,7 @@ where
     type Error = DispatchError;
     type Future = Dispatcher<T, S, B, X, U>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    fn poll_ready(&self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
         let mut flow = self.flow.borrow_mut();
         let ready = flow
             .expect
@@ -460,7 +460,7 @@ where
         }
     }
 
-    fn call(&mut self, (io, addr): (T, Option<net::SocketAddr>)) -> Self::Future {
+    fn call(&self, (io, addr): (T, Option<net::SocketAddr>)) -> Self::Future {
         let on_connect_data =
             OnConnectData::from_io(&io, self.on_connect_ext.as_deref());
 

@@ -98,11 +98,11 @@ where
     type Error = ConnectError;
     type Future = LocalBoxFuture<'static, Result<IoConnection<Io>, ConnectError>>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    fn poll_ready(&self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
         self.0.poll_ready(cx)
     }
 
-    fn call(&mut self, req: Connect) -> Self::Future {
+    fn call(&self, req: Connect) -> Self::Future {
         let mut connector = self.0.clone();
         let inner = self.1.clone();
 
@@ -325,7 +325,7 @@ where
                 {
                     if let Some(timeout) = self.config.disconnect_timeout {
                         if let ConnectionType::H1(io) = conn.io {
-                            actix_rt::spawn(CloseConnection::new(io, timeout))
+                            actix_rt::spawn(CloseConnection::new(io, timeout));
                         }
                     }
                 } else {
@@ -340,7 +340,7 @@ where
                                     if let ConnectionType::H1(io) = io {
                                         actix_rt::spawn(CloseConnection::new(
                                             io, timeout,
-                                        ))
+                                        ));
                                     }
                                 }
                                 continue;
@@ -372,7 +372,7 @@ where
         self.acquired -= 1;
         if let Some(timeout) = self.config.disconnect_timeout {
             if let ConnectionType::H1(io) = io {
-                actix_rt::spawn(CloseConnection::new(io, timeout))
+                actix_rt::spawn(CloseConnection::new(io, timeout));
             }
         }
         self.check_availability();
@@ -535,7 +535,7 @@ where
             rx: Some(rx),
             inner: Some(inner),
             config,
-        })
+        });
     }
 }
 
